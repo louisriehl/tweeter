@@ -29,8 +29,10 @@ body {
  }
 
  main {
+  padding: 50px;
   padding-top: 140px;
   width: 450px;
+  height: 100%;
   background-color: white;
   margin: auto;
  }
