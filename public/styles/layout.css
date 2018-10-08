@@ -27,3 +27,7 @@ body {
  body {
   font-family: 'Roboto Condensed', sans-serif;
  }
+
+ main {
+  padding-top: 100px;
+ }
