@@ -81,4 +81,31 @@ $(document).ready(function () {
   $(".new-tweet button").on("click", () => {
     renderTweets(data);
   });
+
+  $(".new-tweet input[type=submit]").on("click", function(event) {
+    let $form = $(this).siblings("textarea");
+    event.preventDefault();
+    $.ajax("/tweets", {method: 'POST', data: {"text": { "content": $form.val(), "user": "some guy"}}}) // jQuery automatically turns this obj. into query
+      .then(function(result) {
+        console.log("Success!",result);});
+    // let data = { "some": "thing", "text": "other thing"};
+    // $.post( "/tweets", data, function( data ) {
+    //   $( ".result" ).html( data );
+    //   console.log(data);
+    // });
+      });
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
