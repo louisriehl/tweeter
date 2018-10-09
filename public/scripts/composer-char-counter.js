@@ -1,0 +1,1 @@
+console.log("Char counter loaded!");
