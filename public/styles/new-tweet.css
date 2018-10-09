@@ -28,7 +28,8 @@
 }
 
 .new-tweet .counter {
-  left: 70%;
+  float: right;
+  margin-top: 4px;
   position: relative;
   font-style: italic;
   color: #c1c1c1;
