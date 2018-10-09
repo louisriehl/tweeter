@@ -1,6 +1,5 @@
 
 $(document).ready(function () {
-// console.log("Char counter loaded!");
 
   $(".new-tweet textarea").on("input", function () {
     let count = 140 - $(this).val().length;
