@@ -5,53 +5,6 @@
  */
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": `Johann von Goethe`,
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461113796368
-  }
-];
-
 function createTweetElement (tweet) {
 
   // Wrapping variables in a <div> and extracting html to avoid XSS attacks
@@ -75,26 +28,36 @@ function renderTweets(tweets) {
   });
 }
 
-renderTweets(data);
+function loadTweets() {
+  $.ajax("/tweets", {method: 'GET'})
+    .then(function(result) {
+      console.log("Fetched!");
+      result.forEach( element => {
+        console.log(element);
+      });
+      renderTweets(result);
+    });
+}
+
+
 
 $(document).ready(function () {
-  $(".new-tweet button").on("click", () => {
-    renderTweets(data);
-  });
+  loadTweets();
 
   $(".new-tweet input[type=submit]").on("click", function(event) {
     let $form = $(this).siblings("textarea");
     event.preventDefault();
-    $.ajax("/tweets", {method: 'POST', data: {"text": { "content": $form.val(), "user": "some guy"}}}) // jQuery automatically turns this obj. into query
+    if (!$form.val()) {
+      alert("Oops, you need to tweet something!");
+      return;
+    } else if ($form.val().length > 140) {
+      alert("Sorry, your tweet is over the character limit!");
+      return;
+    }
+    $.ajax("/tweets", {method: 'POST', data: {"text": $form.val() }}) // jQuery automatically turns this obj. into query
       .then(function(result) {
         console.log("Success!",result);});
-    // let data = { "some": "thing", "text": "other thing"};
-    // $.post( "/tweets", data, function( data ) {
-    //   $( ".result" ).html( data );
-    //   console.log(data);
-    // });
-      });
-
+  });
 });
 
 
