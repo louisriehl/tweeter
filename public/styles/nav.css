@@ -24,3 +24,26 @@ nav {
   line-height: 250%;
   position: absolute;
 }
+
+#nav-bar button {
+  float: right;
+  height: 80%;
+  width: 8em;
+  margin-top: .5em;
+  background-color: #d0fde3;
+  border-radius: 8px;
+  color: #00a386;
+  border-color: black;
+  border-width: 2px;
+  font-size: 100%;
+  padding: 0;
+}
+
+#nav-bar button:hover {
+  background-color: white;
+  color: black;
+}
+
+#nav-bar button:focus {
+  outline: 0;
+}

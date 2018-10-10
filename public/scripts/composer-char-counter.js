@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
   $(".new-tweet textarea").on("input", function () {
@@ -17,6 +16,11 @@ $(document).ready(function () {
 
   $(".new-tweet").on("submit", function () {
     console.log("submitted!");
+  });
+
+  // Toggles the composer when compose button is clicked
+  $("#nav-bar button").on("click", function () {
+    $(".new-tweet").slideToggle(600);
   });
 
 });
