@@ -19,20 +19,13 @@ MongoClient.connect( MONGODB_URI, (err, db) => {
   // Lazy, fix later!
   if(err) throw err;
 
-const DataHelpers = require("./lib/data-helpers.js")(db);
+  // Pass the mongodb database directly into DataHelpers, the functions there can parse it correctly!
+  // It also means that all the following functions can access the database without needing to reopen connections
+  const DataHelpers = require("./lib/data-helpers.js")(db);
 
+  const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 
-const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-
-
-app.use("/tweets", tweetsRoutes);
-
-  // db.collection("tweets").find().toArray( (err, tweets) => {
-  //   if (err) throw err;
-  //   tweets.forEach( tweet => {
-  //    database.tweets.push(tweet);
-  //   });
-
+  app.use("/tweets", tweetsRoutes);
 
 });
 
