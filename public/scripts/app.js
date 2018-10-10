@@ -50,14 +50,27 @@ $(document).ready(function () {
     let $form = $(this).siblings("textarea");
     event.preventDefault();
     if (!$form.val()) {
-      alert("Oops, you need to tweet something!");
-      return;
+      if ($(".new-tweet .error-message").css("display") === "block") {
+        $(".new-tweet .error-message").text("❗ Text field cannot be empty");
+        return;
+      } else {
+        $(".new-tweet .error-message").text("❗ Text field cannot be empty").slideToggle(200);
+        return;
+      }
     } else if ($form.val().length > 140) {
-      alert("Sorry, your tweet is over the character limit!");
-      return;
+      if ($(".new-tweet .error-message").css("display") === "block") {
+        $(".new-tweet .error-message").text("❗ Tweet exceeds character limit");
+        return;
+      } else {
+        $(".new-tweet .error-message").text("❗ Tweet exceeds character limit").slideToggle(200);
+        return;
+      }
     }
     $.ajax("/tweets", {method: 'POST', data: {"text": $form.val()}}) // jQuery automatically turns this obj. into query
       .then(function(result) {
+        if ($(".new-tweet .error-message").css("display") === "block") {
+          $(".new-tweet .error-message").slideToggle(200);
+        }
         console.log("Success!",result);
         loadTweets(1);
       });
