@@ -20,7 +20,9 @@ $(document).ready(function () {
 
   // Toggles the composer when compose button is clicked
   $("#nav-bar button").on("click", function () {
-    $(".new-tweet").slideToggle(600);
+    $(".new-tweet").slideToggle(600, function() {
+      $(".new-tweet textarea").focus();
+    });
   });
 
 });
