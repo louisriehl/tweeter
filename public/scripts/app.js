@@ -19,7 +19,7 @@ function createTweetElement (tweet) {
     .text(`${$("<div>").text(tweet.created_at).html()}`);
 
   $($tweet).prepend($header).append($footer);
-  $(".show-tweets").append($tweet);
+  $(".show-tweets").prepend($tweet);
 }
 
 function renderTweets(tweets) {
@@ -28,20 +28,24 @@ function renderTweets(tweets) {
   });
 }
 
-function loadTweets() {
+function loadTweets(update) {
   $.ajax("/tweets", {method: 'GET'})
     .then(function(result) {
       console.log("Fetched!");
       result.forEach( element => {
         console.log(element);
       });
-      renderTweets(result);
+      if (update) {
+        let last = result.length - 1;
+        createTweetElement(result[last]);
+      } else {
+        renderTweets(result);
+      }
     });
 }
 
-
-
 $(document).ready(function () {
+
   loadTweets();
 
   $(".new-tweet input[type=submit]").on("click", function(event) {
@@ -54,9 +58,11 @@ $(document).ready(function () {
       alert("Sorry, your tweet is over the character limit!");
       return;
     }
-    $.ajax("/tweets", {method: 'POST', data: {"text": $form.val() }}) // jQuery automatically turns this obj. into query
+    $.ajax("/tweets", {method: 'POST', data: {"text": $form.val()}}) // jQuery automatically turns this obj. into query
       .then(function(result) {
-        console.log("Success!",result);});
+        console.log("Success!",result);
+        loadTweets(1);
+      });
   });
 });
 
