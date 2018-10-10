@@ -2,6 +2,7 @@
 
 const MongoClient = require("mongodb").MongoClient;
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const data = [];
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if(err) {
@@ -34,7 +35,7 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     for (let tweet of tweets) {
       console.log(tweet);
     }
-
+    console.log(data);
     db.close();
   });
 
