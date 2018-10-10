@@ -6,8 +6,6 @@
 
 
 function createTweetElement (tweet) {
-
-  // Wrapping variables in a <div> and extracting html to avoid XSS attacks
   let $tweet = $("<article>")
     .addClass("tweet")
     .append(`<p>${$("<div>").text(tweet.content.text).html()}</p>`);
