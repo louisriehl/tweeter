@@ -8,6 +8,8 @@
 function createTweetElement (tweet) {
   let $tweet = $("<article>")
     .addClass("tweet")
+    .data("likes", tweet.likes)
+    .data("id", tweet._id)
     .append(`<p>${$("<div>").text(tweet.content.text).html()}</p>`);
   let $header = $("<header>")
     .append(`<img src="${$("<div>").text(tweet.user.avatars.regular).html()}">`)
@@ -18,8 +20,11 @@ function createTweetElement (tweet) {
   let $icons =  $(`<span class="icon-container">`)
     .append(`<i class="fab fa-font-awesome-flag"></i>`)
     .append(`<i class="fas fa-retweet"></i>`)
-    .append(`<i class="far fa-heart"></i>`);
+    .append(`<i class="far fa-heart"></i>`)
+    .append(`<p>${$($tweet).data("likes")}</p>`);
   $($footer).append($icons);
+  console.log($($tweet).data("likes"));
+  console.log($($tweet).data("id"));
 
   $($tweet).prepend($header).append($footer);
   $(".show-tweets").prepend($tweet);
@@ -80,6 +85,13 @@ $(document).ready(function () {
         $form.val("").blur();
         loadTweets(1);
       });
+  });
+
+  $("body").on("click", "i.fa-heart", function (event) {
+    const tweetID = $(this).closest("article").data("id");
+    console.log(tweetID);
+    console.log("clicked!");
+    $.ajax(`/tweets/${tweetID}`, {method: "POST"});
   });
 });
 

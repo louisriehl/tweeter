@@ -18,7 +18,7 @@ article.tweet:hover .icon-container {
   visibility: visible;
 }
 article.tweet header {
-  background-color: faded-grey;
+  background-color: #eee;
   width: 100%;
   position: relative;
   border-top-left-radius: 10px;
@@ -36,7 +36,6 @@ article.tweet span.username {
 }
 article.tweet img {
   margin: 5px;
-  filter: grayscale(30%);
   border-radius: 5px;
   height: 80px;
   width: 80px;
@@ -67,6 +66,13 @@ article.tweet .icon-container {
 article.tweet .icon-container i {
   margin-left: 3px;
   margin-right: 3px;
+}
+article.tweet .far {
+  cursor: pointer;
+}
+article.tweet .icon-container p {
+  margin: 0;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=tweet.css.map */
