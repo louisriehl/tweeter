@@ -52,6 +52,10 @@ function loadTweets(update) {
     });
 }
 
+function showLikes() {
+
+}
+
 $(document).ready(function () {
 
   loadTweets();
@@ -88,10 +92,18 @@ $(document).ready(function () {
   });
 
   $("body").on("click", "i.fa-heart", function (event) {
-    const tweetID = $(this).closest("article").data("id");
+    const counter = $(this).next();
+    const $article = $(this).closest("article");
+    const tweetID = $($article).data("id");
+    let likes = $($article).data("likes");
     console.log(tweetID);
     console.log("clicked!");
-    $.ajax(`/tweets/${tweetID}`, {method: "POST"});
+    $.ajax(`/tweets/${tweetID}`, {method: "POST"})
+      .then( function () {
+        console.log("adding like!");
+        $(counter).text(++likes);
+        $($article).data("likes", likes);
+      });
   });
 });
 
