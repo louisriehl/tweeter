@@ -2,7 +2,7 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+As an exercise in CSS, jQuery, and MongoDB, this simulated site allows a user to post tweets as randomly generated accounts, add likes to these tweets, and see them remain consistent even after server reset!
 
 ## Getting Started
 
@@ -15,3 +15,12 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+- MongoDB
+
+## Learning Outcomes
+
+- How to use jQuery
+- How to perform async AJAX requests
+- How to se MongoDB, a collection/document storage option
+- How jQuery and CSS makes applications look good
+- How Sass simplifies writing complicated CSS
