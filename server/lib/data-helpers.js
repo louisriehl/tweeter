@@ -1,6 +1,5 @@
 "use strict";
-const MongoHelper = require("mongodb");
-module.exports = function makeDataHelpers(db) {
+module.exports = function makeDataHelpers(db, MongoHelper) {
   return {
 
     // Saves a tweet to `db`
