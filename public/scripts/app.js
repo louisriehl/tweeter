@@ -20,7 +20,7 @@ function createTweetElement (tweet) {
   let $icons =  $(`<span class="icon-container">`)
     .append(`<i class="fab fa-font-awesome-flag"></i>`)
     .append(`<i class="fas fa-retweet"></i>`)
-    .append(`<i class="far fa-heart"></i>`)
+    .append(`<i class="fas fa-heart"></i>`)
     .append(`<p>${$($tweet).data("likes")}</p>`);
   $($footer).append($icons);
   console.log($($tweet).data("likes"));

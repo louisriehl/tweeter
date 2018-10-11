@@ -67,7 +67,7 @@ article.tweet .icon-container i {
   margin-left: 3px;
   margin-right: 3px;
 }
-article.tweet .far {
+article.tweet .fa-heart {
   cursor: pointer;
 }
 article.tweet .icon-container p {
