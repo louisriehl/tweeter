@@ -15,6 +15,11 @@ function createTweetElement (tweet) {
     .append(`<span class="handle">${$("<div>").text(tweet.user.handle).html()}</span>`);
   let $footer = $("<footer>")
     .text(`${$("<div>").text(tweet.created_at).html()}`);
+  let $icons =  $(`<span class="icon-container">`)
+    .append(`<i class="fab fa-font-awesome-flag"></i>`)
+    .append(`<i class="fas fa-retweet"></i>`)
+    .append(`<i class="far fa-heart"></i>`);
+  $($footer).append($icons);
 
   $($tweet).prepend($header).append($footer);
   $(".show-tweets").prepend($tweet);
@@ -72,6 +77,7 @@ $(document).ready(function () {
           $(".new-tweet .error-message").slideToggle(200);
         }
         console.log("Success!",result);
+        $form.val("").blur();
         loadTweets(1);
       });
   });

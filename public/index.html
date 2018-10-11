@@ -22,6 +22,9 @@
     <!-- Tweet CSS -->
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
+    <!-- AwesomeFont CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -30,6 +33,9 @@
 
     <!-- Character Counter JS -->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+    <!-- jQuery/CSS Animation Handler-->
+    <script type="text/javascript" src="/scrupts/animator.js"></script>
   </head>
 
   <body>
@@ -49,7 +55,7 @@
         <form method="POST" action="/tweets/">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" value="Tweet">
-          <span class="counter">140</span>
+          <span class="counter">140<i class="fas fa-stroopwafel"></i></span>
         </form>
       </section>
       <section class="show-tweets">

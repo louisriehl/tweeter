@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $(".new-tweet textarea").on("input", function () {
+  $(".new-tweet textarea").on("input blur", function () {
     let count = 140 - $(this).val().length;
     const counter = $(this).parent().children(".counter");
 
@@ -12,10 +12,6 @@ $(document).ready(function () {
 
     $(counter).text(count);
 
-  });
-
-  $(".new-tweet").on("submit", function () {
-    console.log("submitted!");
   });
 
   // Toggles the composer when compose button is clicked

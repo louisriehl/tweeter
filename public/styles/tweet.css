@@ -16,6 +16,10 @@ article.tweet:hover {
   border-color: black;
 }
 
+article.tweet:hover .icon-container {
+  visibility: visible;
+}
+
 
 article.tweet header {
  background-color: #eee;
@@ -65,6 +69,16 @@ article.tweet footer {
   padding: 1em;
 }
 
+article.tweet .icon-container{
+  float: right;
+  color: #62c9c0;
+  visibility: hidden;
+}
+
+article.tweet .icon-container i{
+  margin-left: 3px;
+  margin-right: 3px;
+}
 
 
 
