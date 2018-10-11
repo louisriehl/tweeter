@@ -1,6 +1,4 @@
-
-
-nav {
+#nav-bar {
   position: fixed;
   background-color: #00a087;
   color: #e8fdff;
@@ -10,39 +8,34 @@ nav {
   margin: 0;
   width: 100%;
   z-index: 1030;
-
 }
-
 #nav-bar .logo {
-  height: 80px;
   width: 80px;
 }
-
 #nav-bar .header {
   margin-left: 10px;
   font-size: 200%;
   line-height: 250%;
   position: absolute;
 }
-
 #nav-bar button {
   float: right;
   height: 80%;
   width: 8em;
-  margin-top: .5em;
-  background-color: #d0fde3;
+  margin-top: 0.5em;
+  background-color: #e8fdff;
   border-radius: 8px;
-  color: #00a386;
+  color: #00a087;
   border-color: black;
   border-width: 2px;
   padding: 0;
 }
-
 #nav-bar button:hover {
   background-color: white;
   color: black;
 }
-
 #nav-bar button:focus {
   outline: 0;
 }
+
+/*# sourceMappingURL=nav.css.map */

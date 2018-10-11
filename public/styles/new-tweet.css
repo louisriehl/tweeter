@@ -1,51 +1,51 @@
-.new-tweet {
-  border-style: solid;
-  border-width: 1px;
+.new-tweet .counter, .new-tweet {
   border-color: #c1c1c1;
   background-color: #eee;
+}
+
+.new-tweet {
   border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.new-tweet {
   padding: 8px;
   padding-top: 0;
   margin-right: 2em;
   margin-left: 2em;
   display: none;
 }
-
 .new-tweet h2 {
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin: auto 5px 5px 5px;
 }
-
 .new-tweet h2:after {
-  content:' ';
-  display:block;
-  border: .5px solid black;
+  content: " ";
+  display: block;
+  border: 0.5px solid black;
 }
-
 .new-tweet textarea {
   width: 100%;
   padding: 5px;
 }
-
 .new-tweet .counter {
   float: right;
   margin-top: 4px;
   position: relative;
   font-style: italic;
-  color: #c1c1c1;
+}
+.new-tweet .error-message {
+  border-color: red;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  background-color: #ffc7c7;
+  color: red;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-weight: 700;
+  text-align: center;
+  display: none;
 }
 
-.new-tweet .error-message {
-    border-color: red;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 6px;
-    background-color: #ffc7c7;
-    color: red;
-    padding: .5em;
-    margin: .5em;
-    font-weight: 700;
-    text-align: center;
-    display: none;
-}
+/*# sourceMappingURL=new-tweet.css.map */
