@@ -10,26 +10,21 @@ article.tweet {
   padding-top: 0;
   margin: 2em;
 }
-
 article.tweet:hover {
   opacity: 1;
   border-color: black;
 }
-
 article.tweet:hover .icon-container {
   visibility: visible;
 }
-
-
 article.tweet header {
- background-color: #eee;
- width: 100%;
- position: relative;
- border-top-left-radius: 10px;
- border-top-right-radius: 10px;
- overflow: hidden;
+  background-color: faded-grey;
+  width: 100%;
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
 }
-
 article.tweet span.username {
   display: inline-block;
   vertical-align: top;
@@ -39,7 +34,6 @@ article.tweet span.username {
   font-weight: bold;
   position: relative;
 }
-
 article.tweet img {
   margin: 5px;
   filter: grayscale(30%);
@@ -47,7 +41,6 @@ article.tweet img {
   height: 80px;
   width: 80px;
 }
-
 article.tweet span.handle {
   float: right;
   padding: 1em;
@@ -55,12 +48,10 @@ article.tweet span.handle {
   color: #c1c1c1;
   font-style: italic;
 }
-
 article.tweet p {
   font-size: 120%;
   margin: 40px 20px 50px 20px;
 }
-
 article.tweet footer {
   border-top: solid;
   border-width: 1px;
@@ -68,20 +59,14 @@ article.tweet footer {
   color: #445063;
   padding: 1em;
 }
-
-article.tweet .icon-container{
+article.tweet .icon-container {
   float: right;
-  color: #62c9c0;
+  color: #00a087;
   visibility: hidden;
 }
-
-article.tweet .icon-container i{
+article.tweet .icon-container i {
   margin-left: 3px;
   margin-right: 3px;
 }
 
-
-
-
-
-
+/*# sourceMappingURL=tweet.css.map */
