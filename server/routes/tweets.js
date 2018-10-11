@@ -43,6 +43,8 @@ module.exports = function(DataHelpers) {
   });
 
   tweetsRoutes.post("/:id", function (req, res) {
+    console.log(`Got req with id: ${req.params.id}`);
+    DataHelpers.updateLike(req.params.id);
     res.status(201).send();
   });
 

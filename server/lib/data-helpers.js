@@ -1,5 +1,5 @@
 "use strict";
-
+const MongoHelper = require("mongodb");
 module.exports = function makeDataHelpers(db) {
   return {
 
@@ -17,6 +17,11 @@ module.exports = function makeDataHelpers(db) {
         if (err) throw err;
         callback(null, results);
       });
+    },
+
+    updateLike: function(tweetID) {
+      const id = MongoHelper.ObjectID(tweetID);
+      db.collection("tweets").updateOne({"_id": id}, { $inc: { "likes": 1}}, true);
     }
 
   };
