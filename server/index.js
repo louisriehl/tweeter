@@ -1,5 +1,5 @@
 "use strict";
-
+require('dotenv').config();
 // Basic express setup:
 
 const PORT          = 8080;
@@ -12,7 +12,7 @@ app.use(express.static("public"));
 
 // Importing database from mongodb
 const MongoClient = require("mongodb");
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const MONGODB_URI = process.env.MONGODB_URI;
 // const database = { tweets: []};
 
 MongoClient.connect( MONGODB_URI, (err, db) => {
