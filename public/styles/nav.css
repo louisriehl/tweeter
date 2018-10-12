@@ -8,6 +8,7 @@
   margin: 0;
   width: 100%;
   z-index: 1030;
+  box-shadow: 0 5px 5px gray;
 }
 #nav-bar .logo {
   width: 80px;
@@ -37,5 +38,37 @@
 #nav-bar button:focus {
   outline: 0;
 }
+
+ @media (max-width: 1000px) {
+  #nav-bar {
+    height: 150px;
+  }
+  #nav-bar button {
+    width: 25%;
+    font-size: 200%;
+  }
+  #nav-bar .logo {
+    width: 150px;
+  }
+  #nav-bar .header {
+    font-size: 350%;
+  }
+ }
+
+ @media (min-width: 1001px) and (max-width: 1200px) {
+  #nav-bar {
+    height: 100px;
+  }
+  #nav-bar button {
+    width: 20%;
+    font-size: 150%;
+  }
+  #nav-bar .logo {
+    width: 100px;
+  }
+  #nav-bar .header {
+    font-size: 250%;
+  }
+ }
 
 /*# sourceMappingURL=nav.css.map */

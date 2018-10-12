@@ -36,3 +36,17 @@ body {
   background-color: white;
   margin: auto;
  }
+
+ @media (max-width: 1000px) {
+  main {
+    width: 100%;
+    font-size: 180%;
+  }
+ }
+
+ @media (min-width: 1001px) and (max-width: 1200px) {
+  main {
+    width: 80%;
+    font-size: 150%;
+  }
+ }
