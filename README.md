@@ -5,8 +5,8 @@ Tweeter is a simple, single-page Twitter clone.
 As an exercise in CSS, jQuery, and MongoDB, this simulated site allows a user to post tweets as randomly generated accounts, add likes to these tweets, and see them remain consistent even after server reset!
 
 ## Screenshots
-!["Screenshot of Front Page"](https://github.com/louisriehl/tweeter/blob/master/docs/83ac4d9c054fe11c778431a20d6d4fe0.png?raw=true)
-!["Screenshot of Tweet Submitter"](https://github.com/louisriehl/tweeter/blob/master/docs/9d6f5e73c5c40e37b12fcb348d1b0665.png?raw=true)
+!["Screenshot of Front Page"](https://github.com/louisriehl/tweeter/blob/master/docs/liking-tweets.png?raw=true)
+!["Screenshot of Tweet Submitter"](https://github.com/louisriehl/tweeter/blob/master/docs/posting-tweets.png?raw=true)
 
 ## Getting Started
 
