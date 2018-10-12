@@ -30,5 +30,5 @@ MongoClient.connect( MONGODB_URI, (err, db) => {
 
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log("Example app listening on port " + process.env.PORT || 5000);
+  console.log("Tweeter app listening on port 5000");
 });

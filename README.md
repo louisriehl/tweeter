@@ -22,6 +22,7 @@ As an exercise in CSS, jQuery, and MongoDB, this simulated site allows a user to
 - Express
 - Node 5.10.x or above
 - MongoDB
+- moment
 
 ## Learning Outcomes
 
