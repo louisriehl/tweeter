@@ -70,6 +70,9 @@ article.tweet .icon-container i {
 article.tweet .fa-heart {
   cursor: pointer;
 }
+article.tweet .fa-heart:hover {
+  color: red;
+}
 article.tweet .icon-container p {
   margin: 0;
   display: inline-block;
