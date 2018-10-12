@@ -15,6 +15,8 @@ As an exercise in CSS, jQuery, and MongoDB, this simulated site allows a user to
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
+*_OR_* simply check it out on [heroku!](https://shielded-thicket-40017.herokuapp.com/)
+
 ## Dependencies
 
 - Express
