@@ -38,13 +38,14 @@ function createTweetElement (tweet) {
   $(".show-tweets").prepend($tweet);
 }
 
-/* */
+/* Render all tweets in server */
 function renderTweets(tweets) {
   tweets.forEach( (element) => {
     createTweetElement(element);
   });
 }
 
+/* Loads all tweets, or loads latest tweet if an update */
 function loadTweets(update) {
   $.ajax("/tweets", {method: 'GET'})
     .then(function(result) {
@@ -57,10 +58,6 @@ function loadTweets(update) {
         renderTweets(result);
       }
     });
-}
-
-function showLikes() {
-
 }
 
 $(document).ready(function () {
@@ -93,29 +90,27 @@ $(document).ready(function () {
         if ($(".new-tweet .error-message").css("display") === "block") {
           $(".new-tweet .error-message").slideToggle(200);
         }
-        $form.val("").blur();
+        $form.val("").blur(); // Calling blur event forces character counter to update after posting
         loadTweets(1);
       });
   });
 
+  // When heart is clicked, the database will register the like
   $("body").on("click", "i.fa-heart", function (event) {
     const $heart = $(this);
     const counter = $(this).next();
     const $article = $(this).closest("article");
     const tweetID = $($article).data("id");
     let likes = $($article).data("likes");
-    console.log(`Current element is: ${$(this).attr("class")}`);
 
     $.ajax(`/tweets/${tweetID}`, {method: "POST"})
       .then( function () {
         if (likes === 1){
           $(counter).text(--likes);
-          $($heart).addClass(`far`).removeClass(`fas`);
-          console.log(`Like removed, current element is: ${$($heart).attr("class")}`);
+          $($heart).addClass(`far`).removeClass(`fas`); // This updates the like client side, while doing a neat animation!
         } else if (likes === 0){
           $(counter).text(++likes);
           $($heart).addClass(`fas`).removeClass(`far`);
-          console.log(`Like added, current element is: ${$($heart).attr("class")}`);
         }
         $($article).data("likes", likes);
       });

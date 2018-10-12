@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+  // Update on blur to help with when user has finished posting
   $(".new-tweet textarea").on("input blur", function () {
     let count = 140 - $(this).val().length;
     const counter = $(this).parent().children(".counter");

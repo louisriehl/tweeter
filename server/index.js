@@ -16,7 +16,6 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // const database = { tweets: []};
 
 MongoClient.connect( MONGODB_URI, (err, db) => {
-  // Lazy, fix later!
   if(err) throw err;
 
   // Pass the mongodb database directly into DataHelpers, the functions there can parse it correctly!

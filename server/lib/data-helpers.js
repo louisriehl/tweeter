@@ -9,7 +9,7 @@ module.exports = function makeDataHelpers(db, MongoHelper) {
       callback(null,true);
     },
 
-    // Get all tweets in `db`, sorted by newest first
+    // Get all tweets in `db`
     getTweets: function(callback) {
 
       db.collection("tweets").find().toArray( (err, results) => {
@@ -18,6 +18,7 @@ module.exports = function makeDataHelpers(db, MongoHelper) {
       });
     },
 
+    // Updates like by searching for a tweet with a matching ID in the mongo database
     updateLike: function(tweetID) {
       const id = MongoHelper.ObjectID(tweetID);
       let increment = 0;

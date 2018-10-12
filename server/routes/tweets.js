@@ -7,6 +7,7 @@ const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
+  /* -- Get Request Handler Returns Tweets and Updates Time */
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
@@ -22,6 +23,7 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  /* -- Post Handler creates new random Tweet and pushes it to the server */
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
@@ -47,6 +49,7 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  /* -- Post Handler updates likes */
   tweetsRoutes.post("/:id", function (req, res) {
     DataHelpers.updateLike(req.params.id);
     res.status(201).send();
