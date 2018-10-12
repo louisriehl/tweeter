@@ -20,7 +20,17 @@ module.exports = function makeDataHelpers(db, MongoHelper) {
 
     updateLike: function(tweetID) {
       const id = MongoHelper.ObjectID(tweetID);
-      db.collection("tweets").updateOne({"_id": id}, { $inc: { "likes": 1}}, true);
+      let increment = 0;
+      db.collection("tweets").findOne({"_id": id}, {"likes": 1})
+        .then(function(numberOfLikes) {
+          if(numberOfLikes.likes === 1) {
+            increment = -1;
+          } else if (numberOfLikes.likes === 0) {
+            increment = 1;
+          }
+        }).then(function () {
+          db.collection("tweets").updateOne({"_id": id}, { $inc: { likes: increment}}, true);
+        });
     }
 
   };

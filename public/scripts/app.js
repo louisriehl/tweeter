@@ -6,6 +6,7 @@
 
 
 function createTweetElement (tweet) {
+  let heartClass = "";
   let $tweet = $("<article>")
     .addClass("tweet")
     .data("likes", tweet.likes)
@@ -17,14 +18,17 @@ function createTweetElement (tweet) {
     .append(`<span class="handle">${$("<div>").text(tweet.user.handle).html()}</span>`);
   let $footer = $("<footer>")
     .text(`${$("<div>").text(tweet.created_at).html()}`);
+  if (tweet.likes === 1) {
+    heartClass = "fas fa-heart";
+  } else if(tweet.likes === 0) {
+    heartClass = "far fa-heart";
+  }
   let $icons =  $(`<span class="icon-container">`)
     .append(`<i class="fab fa-font-awesome-flag"></i>`)
     .append(`<i class="fas fa-retweet"></i>`)
-    .append(`<i class="fas fa-heart"></i>`)
+    .append(`<i class="${heartClass}"></i>`)
     .append(`<p>${$($tweet).data("likes")}</p>`);
   $($footer).append($icons);
-  console.log($($tweet).data("likes"));
-  console.log($($tweet).data("id"));
 
   $($tweet).prepend($header).append($footer);
   $(".show-tweets").prepend($tweet);
@@ -39,9 +43,7 @@ function renderTweets(tweets) {
 function loadTweets(update) {
   $.ajax("/tweets", {method: 'GET'})
     .then(function(result) {
-      console.log("Fetched!");
       result.forEach( element => {
-        console.log(element);
       });
       if (update) {
         let last = result.length - 1;
@@ -60,6 +62,7 @@ $(document).ready(function () {
 
   loadTweets();
 
+  // Validate a new tweet, and load it on the page and database
   $(".new-tweet input[type=submit]").on("click", function(event) {
     let $form = $(this).siblings("textarea");
     event.preventDefault();
@@ -85,23 +88,30 @@ $(document).ready(function () {
         if ($(".new-tweet .error-message").css("display") === "block") {
           $(".new-tweet .error-message").slideToggle(200);
         }
-        console.log("Success!",result);
         $form.val("").blur();
         loadTweets(1);
       });
   });
 
   $("body").on("click", "i.fa-heart", function (event) {
+    const $heart = $(this);
     const counter = $(this).next();
     const $article = $(this).closest("article");
     const tweetID = $($article).data("id");
     let likes = $($article).data("likes");
-    console.log(tweetID);
-    console.log("clicked!");
+    console.log(`Current element is: ${$(this).attr("class")}`);
+
     $.ajax(`/tweets/${tweetID}`, {method: "POST"})
       .then( function () {
-        console.log("adding like!");
-        $(counter).text(++likes);
+        if (likes === 1){
+          $(counter).text(--likes);
+          $($heart).addClass(`far`).removeClass(`fas`);
+          console.log(`Like removed, current element is: ${$($heart).attr("class")}`);
+        } else if (likes === 0){
+          $(counter).text(++likes);
+          $($heart).addClass(`fas`).removeClass(`far`);
+          console.log(`Like added, current element is: ${$($heart).attr("class")}`);
+        }
         $($article).data("likes", likes);
       });
   });
