@@ -32,6 +32,5 @@ module.exports = function makeDataHelpers(db, MongoHelper) {
           db.collection("tweets").updateOne({"_id": id}, { $inc: { likes: increment}}, true);
         });
     }
-
   };
 };
