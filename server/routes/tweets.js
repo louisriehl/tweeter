@@ -1,7 +1,7 @@
 "use strict";
 
 const userHelper    = require("../lib/util/user-helper");
-const moment        = require("moment");
+const tweetTime     = require("../lib/util/timeDifference");
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
@@ -12,6 +12,11 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
+
+        tweets.forEach( element => {
+          element.created_at = tweetTime(element.created_at);
+        });
+
         res.json(tweets);
       }
     });
@@ -30,7 +35,7 @@ module.exports = function(DataHelpers) {
         text: req.body.text
       },
       likes: 0,
-      created_at: moment(Date.now()).fromNow()
+      created_at: Date.now()
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
